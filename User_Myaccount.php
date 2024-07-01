@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <title>Buyer - My orders</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="">
+        <meta property="og:type" content="">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+        <!-- Template CSS -->
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+
+    <body>
+        <?php
+        include './headerandmobileheader.php';
+        ?><?php
+        ?>
+        <!--============= Header Section Ends Here =============-->
+        <?php
+        if (!(isset($_SESSION["user_id"]))) {
+            header('Location:register.php');
+        } else {
+            ?>
+        <main class="main">
+            <div class="page-header breadcrumb-wrap">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="index.php" rel="nofollow">Home</a>
+                        <span></span> Buyer
+                        <span></span> Dashboard
+                    </div>
+                </div>
+            </div>
+            <section class="pt-150 pb-150">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 m-auto">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="dashboard-menu">
+
+
+                                        <ul class="nav flex-column" role="tablist">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="User_Myaccount.php"><i class="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link " href="User_myorders.php"><i class="fi-rs-shopping-bag mr-10"></i>Orders</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="UserTrackorders.php"><i class="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="UserOffercoupon.php"><i class="fi-rs-marker mr-10"></i>Offer coupon to friend</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"  href="BuyerEditAccount.php" ><i class="fi-rs-user mr-10"></i>Account details</a>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="tab-content dashboard-content">
+
+                                        <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5 class="mb-0">Dashboard</h5>
+                                                </div>
+                                                <center>
+                                                    <?php
+                                                    $se_nameinfull = $_SESSION["nameinfull"];
+                                                    ?>
+                                                    
+                                                    <h5 class="mb-0"> Hello <?php echo $se_nameinfull; ?></h5><br>
+                                                    <h5 class="mb-0"> Your purchase history</h5>
+                                                </center>
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>#</th>
+                                                                    <th>Item ID</th>
+                                                                    <th>Item Name</th>
+                                                                    <th>Date</th>
+                                                                    <th>Time</th>
+                                                                    <th>Unit price</th>
+                                                                    <th>Qty</th>
+                                                                    <th>Seller email</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                include './Phpfiles/DB.php';
+                                                                $buye_emailz = $_SESSION["emailz"];
+
+
+
+                                                                $sqlzy34 = "SELECT * FROM solitems where buyeremailz='$buye_emailz'";
+                                                                $query4 = $conn->query($sqlzy34);
+                                                                $increment = 0;
+                                                                foreach ($query4 as $value4) {
+                                                                    $increment++;
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td><?php echo $increment; ?></td>
+                                                                        <td><img src="Phpfiles/<?php echo $value4['thumbimagepathz']; ?>" style="width: 100px;height: 100px;"></td>
+                                                                        <td><?php echo $value4['itemidgenarated']; ?></td>
+                                                                        <td><?php echo $value4['itemname']; ?></td>
+                                                                        <td><?php echo $value4['datez']; ?></td>
+                                                                        <td><?php echo $value4['timez']; ?></td>
+                                                                        <td><?php echo $value4['unitprice']; ?></td>
+                                                                        <td><?php echo $value4['qty']; ?></td>
+                                                                        <td><?php echo $value4['selleremail']; ?></td>
+                                                                    </tr>
+                                                                    <?php
+                                                                }
+                                                                ?>
+
+                                                            </tbody>
+
+
+
+                                                        </table>
+
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <center>
+                                            <?php
+                                            $sqlzy3455 = "SELECT * FROM buyerratingz where buyeridz='$buye_emailz'";
+                                            $query455 = $conn->query($sqlzy3455);
+                                            $isellerrank = 0;
+                                            $sellerlevelneed = 0;
+                                            foreach ($query455 as $value455) {
+                                                ?>
+                                                <?php
+                                                if ($value455['ratingpoints'] >= 0 && $value455['ratingpoints'] < 300) {
+                                                    $sellerlevelneed = 1;
+                                                    ?>
+                                                    
+                                                    <?php
+                                                } else if ($value455['ratingpoints'] >= 100 && $value455['ratingpoints'] < 600) {
+                                                    $sellerlevelneed = 2;
+                                                    ?>
+
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                            <label> Your buyer level is <span class = "badge rounded-pill bg-success" style="font-size: 20px;"><?php echo $sellerlevelneed; ?></span> </label><br>
+                                            <label> Current points <span class = "badge rounded-pill bg-warning"><?php echo $value455['ratingpoints']; ?></span> </label><br>
+                                            <?php
+                                            if ($sellerlevelneed == 1) {
+                                                ?>
+                                                <label> Next level at <span class = "badge rounded-pill bg-warning">300</span></label>
+
+                                                <?php
+                                            } else if ($sellerlevelneed == 2) {
+                                                ?>
+                                                <label> Next level at <span class = "badge rounded-pill bg-warning">600</span></label>
+
+                                                <?php
+                                            } else if ($sellerlevelneed == 3) {
+                                                ?>
+                                                <label> Next level at <span class = "badge rounded-pill bg-warning">1000</span></label>
+
+                                                <?php
+                                            }
+                                            ?>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <?php
+        include './Footer.php';
+        ?>
+        <!-- Preloader Start -->
+        <div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="text-center">
+                        <h5 class="mb-5">Now Loading</h5>
+                        <div class="loader">
+                            <div class="bar bar1"></div>
+                            <div class="bar bar2"></div>
+                            <div class="bar bar3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Vendor JS-->
+        <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/plugins/slick.js"></script>
+        <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+        <script src="assets/js/plugins/wow.js"></script>
+        <script src="assets/js/plugins/jquery-ui.js"></script>
+        <script src="assets/js/plugins/perfect-scrollbar.js"></script>
+        <script src="assets/js/plugins/magnific-popup.js"></script>
+        <script src="assets/js/plugins/select2.min.js"></script>
+        <script src="assets/js/plugins/waypoints.js"></script>
+        <script src="assets/js/plugins/counterup.js"></script>
+        <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+        <script src="assets/js/plugins/images-loaded.js"></script>
+        <script src="assets/js/plugins/isotope.js"></script>
+        <script src="assets/js/plugins/scrollup.js"></script>
+        <script src="assets/js/plugins/jquery.vticker-min.js"></script>
+        <script src="assets/js/plugins/jquery.theia.sticky.js"></script>
+        <!-- Template  JS -->
+        <script src="assets/js/main.js"></script>
+
+        <script>
+
+            function singleorderbuyer(cc) {
+
+                var itemid = cc;
+                var idgenarated = $('#orderzid' + cc).val();
+                var url = "USER_singleorderdetails.php?ordersz=" + idgenarated;
+
+                window.open(url);
+            }
+
+
+        </script>
+        <?php
+    }
+    ?>
+</body>
+
+
+</html>
