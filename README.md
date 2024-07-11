@@ -10,7 +10,7 @@ Instalation STEPS>>>
 
 <div> 1)WEB Insatallation: </div>
 
-< First download Netbeans,Vs code or any IDE that can run a web project.
+<div>< First download Netbeans,Vs code or any IDE that can run a web project. </div>
 <Then install the IDE setup into your PC or Laptop.
 <After the installetion open the IDE and click on the "Open new file" and load 
 the source code into IDE.
