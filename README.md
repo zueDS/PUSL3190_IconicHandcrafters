@@ -10,20 +10,20 @@ Instalation STEPS>>>
 
 <div> 1)WEB Insatallation: </div>
 
-<div>< First download Netbeans,Vs code or any IDE that can run a web project. </div>
-<Then install the IDE setup into your PC or Laptop.
-<After the installetion open the IDE and click on the "Open new file" and load 
-the source code into IDE.
+<div>*First download Netbeans,Vs code or any IDE that can run a web project. </div>
+<div>*Then install the IDE setup into your PC or Laptop. </div>
+<div>*After the installetion open the IDE and click on the "Open new file" and load 
+the source code into IDE.</div>
 
-<Then download MySQL setup and install it into you computer.
-<Then config the MySQL and type a new username and password.
-<At last import the sql file which is nammed "hadcraft.sql" that included
- in the folder.
-<And then connect the WampServer.
-<After installation of IDE, WampServer and MySQL, make sure to connect your
- computer to internet.
-<Then finally run the project through the IDE.
-
+<div>*Then download MySQL setup and install it into you computer. </div>
+<div>*Then config the MySQL and type a new username and password. </div>
+<div>*At last import the sql file which is nammed "hadcraft.sql" that included 
+ in the folder.</div>
+<div>*And then connect the WampServer. </div>
+<div>*After installation of IDE, WampServer and MySQL, make sure to connect your
+ computer to internet. </div>
+<div>*Then finally run the project through the IDE.</div>
+<br>
 PROJECT UI
 
 ---- HOME PAGE ----
