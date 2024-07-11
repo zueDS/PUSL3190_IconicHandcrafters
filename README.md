@@ -8,7 +8,7 @@ Android Studio for mobile application. <br>
 
 Instalation STEPS>>>
 
-1)WEB Insatallation:
+<div> 1)WEB Insatallation: </div>
 
 < First download Netbeans,Vs code or any IDE that can run a web project.
 <Then install the IDE setup into your PC or Laptop.
