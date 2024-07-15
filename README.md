@@ -28,3 +28,4 @@ PROJECT UI
 
 ---- HOME PAGE ----
 ![Capture copy](https://github.com/zueDS/PUSL3190_IconicHandcrafters/assets/100902344/5536ae07-1e7f-4812-bb19-98aae34832f1)
+<br>
