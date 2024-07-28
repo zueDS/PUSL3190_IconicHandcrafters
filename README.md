@@ -1,6 +1,6 @@
 Required softwares:
 
-NetBeans or VS code for web application. <br>
+*NetBeans or VS code for web application. <br>
 Wamp sever <br>
 MySQL <br>
 Android Studio for mobile application. <br>
